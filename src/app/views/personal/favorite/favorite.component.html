@@ -1,0 +1,36 @@
+<div class="favorite">
+  <div class="container">
+    <div class="favorite-title">Избранное</div>
+
+    <div class="favorite-products" *ngIf="products && products.length > 0">
+      <div class="favorite-product" *ngFor="let product of products">
+        <div class="favorite-product-image"
+        style="background-image: url({{serverStaticPath + product.image}})">
+        </div>
+        <div class="favorite-product-name">{{product.name}}</div>
+        <div class="favorite-product-price">{{product.price}} BYN</div>
+        <div class="favorite-product-action">
+          <button class="button" routerLink="/product/{{product.url}}">Открыть</button>
+        </div>
+        <div class="favorite-product-remove" (click)="removeFromFavorites(product.id)">
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_1332)">
+              <line x1="1.93562" y1="3.50635" x2="13.9564" y2="15.5272" stroke="#A8ABA7" stroke-linecap="round"/>
+              <line x1="13.9238" y1="3.4864" x2="1.90301" y2="15.5072" stroke="#A8ABA7" stroke-linecap="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_1_1332">
+                <rect width="16" height="16" fill="white" transform="translate(0 0.856445)"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="favorite-empty" *ngIf="!products || (products && products.length === 0)">
+      <div>В избранном нет товаров</div>
+      <button class="button" routerLink="/catalog">Перейти в каталог</button>
+    </div>
+  </div>
+</div>

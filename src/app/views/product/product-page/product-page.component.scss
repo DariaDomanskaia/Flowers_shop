@@ -1,0 +1,122 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.product-page {
+  padding: 101px 0 110px 0;
+
+  .container {
+
+    .pp-title {
+      @include head-lora-36;
+    }
+
+    .pp-product {
+      margin-top: 30px;
+      margin-bottom: 120px;
+      display: flex;
+      justify-content: space-between;
+
+      .pp-product-image {
+        width: 528px;
+        height: 528px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+      }
+
+      .pp-product-info {
+        width: 602px;
+
+        .product-info-items {
+          margin-bottom: 51px;
+
+          .product-info-item {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #E7F1E8;
+            display: flex;
+
+            &:first-child {
+              padding-top: 0;
+              margin-top: 0;
+              border-top: 0;
+            }
+
+            .item-text {
+              margin-left: 22px;
+              width: 528px;
+
+              .item-text-title {
+                color: $green-text-color;
+                font-family: "Montserrat Medium", sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 130%;
+                margin-bottom: 15px;
+              }
+
+              .item-text-description {
+                color: $grey-text-color;
+                font-size: 16px;
+                line-height: 130%;
+              }
+            }
+          }
+        }
+
+        .product-info-param {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          margin-top: 12px;
+
+          .product-info-param-name {
+            font-weight: 500;
+            margin-right: 10px;
+          }
+        }
+
+        .product-info-params {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .product-info-params-count {
+            display: flex;
+            align-items: center;
+
+            span {
+              font-weight: 500;
+              font-size: 16px;
+              margin-right: 20px;
+            }
+          }
+
+          .product-info-params-price {
+            font-family: "Montserrat Bold", sans-serif;
+            font-size: 40px;
+            color: #313131;
+          }
+        }
+
+        .pp-product-info-actions {
+          display: flex;
+          align-items: center;
+          margin-top: 22px;
+          .button {
+            width: 290px;
+
+            &.button-transparent {
+              width: 307px;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .recommended-products {
+
+    }
+  }
+}
