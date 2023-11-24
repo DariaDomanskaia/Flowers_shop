@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ProductService} from "../../shared/services/product.service";
 import {ProductType} from "../../../types/product.type";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {AuthService} from "../../core/auth/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -10,8 +11,9 @@ import {OwlOptions} from "ngx-owl-carousel-o";
 })
 export class MainComponent implements OnInit {
 
-
+  authService = inject(AuthService);
   products: ProductType[] = [];
+  isLogged: boolean = false;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -104,6 +106,7 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.productService.getBestProducts()
       .subscribe((data: ProductType[]) => {
         this.products = data;

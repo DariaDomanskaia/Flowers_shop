@@ -57,9 +57,12 @@ export class ProductPageComponent implements OnInit {
 
   count: number = 1;
 
+  isLogged: boolean = false;
+
   constructor(private productService: ProductService,
               private activatedRout: ActivatedRoute,
               private cartService: CartService) {
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {
