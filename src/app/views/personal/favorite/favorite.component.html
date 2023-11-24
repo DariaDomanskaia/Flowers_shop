@@ -10,7 +10,12 @@
         <div class="favorite-product-name">{{product.name}}</div>
         <div class="favorite-product-price">{{product.price}} BYN</div>
         <div class="favorite-product-action">
-          <button class="button" routerLink="/product/{{product.url}}">Открыть</button>
+          <div class="wrap"><button class="button" *ngIf="!product.isInCount" (click)="addToCart(product.id)">В корзину</button></div>
+          <div class="wrap"  *ngIf="product.isInCount && product.cartCount">
+            <button class="button">В корзине</button>
+            <count-selector [count]="product.cartCount" (onCountChange)="updateCount($event, product.id)"></count-selector>
+          </div>
+
         </div>
         <div class="favorite-product-remove" (click)="removeFromFavorites(product.id)">
           <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -65,7 +65,7 @@ export class CartComponent implements OnInit{
         }
         this.cart = data as CartType;
         this.calculateTotal();
-      })
+      });
   }
 
   calculateTotal() {

@@ -29,8 +29,8 @@
       .favorite-product-image {
         background-position: center;
         background-size: cover;
-        width: 100px;
-        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
         border-radius: 5px;
       }
 
@@ -44,10 +44,20 @@
 
       .favorite-product-price {
         width: 100px;
-        margin-right: 193px;
+        margin-right: 170px;
         font-family: "Montserrat Medium", sans-serif;
         font-size: 22px;
         color: $grey-text-color;
+      }
+
+      .favorite-product-action {
+
+        .wrap {
+          min-width: 275px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
       }
 
       .favorite-product-action button{
@@ -55,7 +65,7 @@
       }
 
       .favorite-product-remove {
-        margin-left: 61px;
+        margin-left: 50px;
         cursor: pointer;
       }
     }

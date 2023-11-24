@@ -19,6 +19,7 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product!: ProductType;
   @Input() isLight: boolean = false;
+  @Input() isGuest: boolean = false;
   @Input() countInCart: number | undefined = 0;
 
   authService = inject(AuthService);
