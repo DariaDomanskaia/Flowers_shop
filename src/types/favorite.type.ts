@@ -6,5 +6,5 @@ export type FavoriteType = {
   url: string,
 
   cartCount?: number,
-  isInCount?: boolean
+  isInCount?: boolean,
 }
