@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/auth/auth.service";
 import {DefaultResponseType} from "../../../../types/default-response.type";
@@ -6,6 +6,7 @@ import {LoginResponseType} from "../../../../types/login-response.type";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {CartService} from "../../../shared/services/cart.service";
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  cartService = inject(CartService);
 
   loginForm = this.fb.group({
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.required]],
     rememberMe: [false],
-  })
+  });
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -50,6 +52,8 @@ export class LoginComponent {
             this.authService.userId = loginResponse.userId;
             this._snackBar.open('Успешная авторизация в системе');
             this.router.navigate(['/']);
+
+
 
           },
           error: (errorResponse: HttpErrorResponse) => {

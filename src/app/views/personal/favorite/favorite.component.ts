@@ -23,9 +23,9 @@ export class FavoriteComponent implements OnInit {
   productInCart: CartType | null = null;
   count: number = 1;
 
-constructor() {
+/*constructor() {
   this.updateFavorite();
-}
+}*/
 
   ngOnInit(): void {
     this.favoriteService.getFavorites()
@@ -35,7 +35,9 @@ constructor() {
           throw new Error(error);
         }
         this.products = data as FavoriteType[];
-        this.updateFavorite();
+        if (this.products && this.products.length > 0){
+          this.updateFavorite();
+        }
       });
   }
 
@@ -91,6 +93,7 @@ constructor() {
             throw new Error((data as DefaultResponseType).message);
           }
           this.countInCart = value;
+          this.cartService.getCartCount();
           this.updateFavorite();
         });
     }

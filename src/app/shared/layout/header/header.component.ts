@@ -9,7 +9,7 @@ import {ProductService} from "../../services/product.service";
 import {ProductType} from "../../../../types/product.type";
 import {environment} from "../../../../environments/environment";
 import {FormControl, FormControlName} from "@angular/forms";
-import {debounceTime} from "rxjs";
+import {debounceTime, Subject} from "rxjs";
 
 
 @Component({
@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.count$
       .subscribe(count => {
         this.count = count;
-      })
+      });
   }
 
   logout(): void {
@@ -85,11 +85,13 @@ export class HeaderComponent implements OnInit {
       })
   }
 
+
   doLogout(): void {
     this.authService.removeTokens();
     this.authService.userId = null;
     this._snackBar.open('Выход из системы выполнен');
     this.router.navigate(['/']);
+    this.cartService.setCount(0);
   }
 
   /*changedSearchValue(newValue: string) {
